@@ -13,7 +13,7 @@ A person should be able to open the website and click a sign up button that take
 
 ![Index](assets/Index.jpg)
 
-![Signup](assets/signup.jpg)
+![Signup](assets/Signup.jpg)
 
 ![Profile](assets/Profile.jpg)
 
