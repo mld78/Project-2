@@ -1,0 +1,22 @@
+<div class="posts-wrapper row">
+  <div class="post">
+    <div class="post-head">
+
+    </div>
+    <div class="image center-block">
+      <%= image_tag @couplet.image.url(:medium) %>
+    </div>
+    <p class="title">
+      <%= @couplet.title %>
+    </p>
+    <p class="first_line">
+      <%= @couplet.first_line %>
+    </p>
+    <p class="last_line">
+      <%= @couplet.last_line %>
+    </p>
+    <div class="text-center">
+      <%= link_to "Back to Couplet feed", couplets_path %>
+    </div>
+  </div>
+</div>

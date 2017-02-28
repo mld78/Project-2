@@ -1,0 +1,11 @@
+<h1> Couplets With Strangers </h1>
+
+<body>
+<% @couplets.each do |couplet| %>
+<%= link_to (image_tag couplet.image.url(:medium), class:'img-responsive'), couplet %>
+  <%= couplet.title%>
+  <%= couplet.first_line%>
+  <%= couplet.last_line%>
+<% end %>
+
+</body>
