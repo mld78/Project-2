@@ -2,11 +2,12 @@
 
 <body>
 <% @couplets.each do |couplet| %>
-<%= couplet.user.user_name %>
+
 <%= link_to (image_tag couplet.image.url(:medium), class:'img-responsive'), couplet %>
   <%= couplet.title%>
   <%= couplet.first_line%>
-  <%= couplet.last_line%>
+  <%= couplet.last_line%> <br>
+  by <%= couplet.user.user_name %>
 <% end %>
 
 </body>

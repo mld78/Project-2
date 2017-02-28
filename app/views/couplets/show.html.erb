@@ -1,7 +1,5 @@
 <body>
-      <div class="name">
-        <%= couplet.user.user_name %>
-      </div>
+
     </div>
     <div class="image center-block">
       <%= image_tag @couplet.image.url(:medium) %>
@@ -9,6 +7,9 @@
     <p class="title">
       <%= @couplet.title %>
     </p>
+    <div class="name">
+      <%= @couplet.user.user_name %>
+    </div>
     <p class="first_line">
       <%= @couplet.first_line %>
     </p>
@@ -16,8 +17,17 @@
       <%= @couplet.last_line %>
     </p>
     <div class="text-center">
-      <%= link_to "Back to Couplet feed", couplets_path %>
-      <%= link_to "Edit Couplet", edit_couplet_path(@couplet) %>
+
+      <% if @couplet.user.id == current_user.id %>
+          <div class="text-center edit-links">
+            <%= link_to "Edit Couplet", edit_couplet_path(@couplet) %> <br>
+            <%= link_to "Back to Couplet feed", couplets_path %>
+            </div>
+      <% else %>
+          <div class="text-center edit-links">
+            <%= link_to "Back to Couplet feed", couplets_path %>
+        </div>
+      <% end %>
 
     </div>
 </body>
