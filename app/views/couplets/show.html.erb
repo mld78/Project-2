@@ -1,7 +1,7 @@
-<div class="posts-wrapper row">
-  <div class="post">
-    <div class="post-head">
-
+<body>
+      <div class="name">
+        <%= couplet.user.user_name %>
+      </div>
     </div>
     <div class="image center-block">
       <%= image_tag @couplet.image.url(:medium) %>
@@ -20,5 +20,4 @@
       <%= link_to "Edit Couplet", edit_couplet_path(@couplet) %>
 
     </div>
-  </div>
-</div>
+</body>
