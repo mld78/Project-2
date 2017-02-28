@@ -1,9 +1,3 @@
-<%= simple_form_for @couplet do |f| %>
-  <%= f.input :image %>
-  <%= f.input :title %>
-  <%= f.input :first_line %>
-  <%= f.input :last_line %>
-  <%= f.button :submit %>
-<% end %>
+<%= render 'form'  %>
 
 <%= link_to 'Back', couplets_path %>

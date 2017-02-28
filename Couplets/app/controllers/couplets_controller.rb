@@ -23,10 +23,23 @@ class CoupletsController < ApplicationController
 
  def edit
    @couplet = Couplet.find(params[:id])
+
  end
 
  def update
+   @couplet = Couplet.find(params[:id])
+   if @couplet.update_attributes(couplet_params)
+      redirect_to couplets_path
+    else
+      render :edit
+    end
  end
+
+ def destroy
+  @couplet = Couplet.find(params[:id])
+  @couplet.destroy
+  redirect_to couplets_path
+end
 
   private
 
