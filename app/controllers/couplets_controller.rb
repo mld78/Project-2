@@ -59,8 +59,6 @@ end
       @couplet = Couplet.find(params[:id])
     end
 
-
-
   def couplet_params
     params.require(:couplet).permit(:image, :title, :first_line, :last_line)
   end

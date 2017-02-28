@@ -1,13 +1,36 @@
 <h1> Couplets With Strangers </h1>
 
 <body>
-<% @couplets.each do |couplet| %>
+  <div>
+    <!-- Shows the couplet -->
+    <div>
+    <% @couplets.each do |couplet| %>
 
-<%= link_to (image_tag couplet.image.url(:medium), class:'img-responsive'), couplet %>
-  <%= couplet.title%>
-  <%= couplet.first_line%>
-  <%= couplet.last_line%> <br>
-  by <%= couplet.user.user_name %>
-<% end %>
-
+    <%= link_to (image_tag couplet.image.url(:medium), class:'img-responsive'), couplet %>
+    <%= couplet.title%>
+    <%= couplet.first_line%>
+    <%= couplet.last_line%> <br>
+    by <%= couplet.user.user_name %>
+    <% if couplet.comments %>
+    <% couplet.comments.each do |comment| %>
+    <div>
+        <div>
+            <%= comment.user.user_name %>
+        </div>
+        <div >
+            <%= comment.substance %>
+        </div>
+        <% if comment.user == current_user %>
+        <%= link_to 'Delete Comment', couplet_comment_path(couplet, comment), method: :delete, data: { confirm: "Are you sure?" } %>
+        <% end %>
+    </div>
+    <% end %>
+    <% end %>
+    <div >
+        <%= form_for [couplet, couplet.comments.new] do |f| %>
+        <%= f.text_field :substance, placeholder: 'Add a comment...' %>
+        <% end %>
+    <% end %>
+  </div>
+</div>
 </body>

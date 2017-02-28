@@ -1,6 +1,6 @@
 <body>
 
-    </div>
+  <div>
     <div class="image center-block">
       <%= image_tag @couplet.image.url(:medium) %>
     </div>
@@ -16,6 +16,10 @@
     <p class="last_line">
       <%= @couplet.last_line %>
     </p>
+    
+  </div>
+
+
     <div class="text-center">
 
       <% if @couplet.user.id == current_user.id %>

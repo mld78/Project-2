@@ -1,6 +1,7 @@
 class Couplet < ApplicationRecord
   validates :user_id, presence: true
   belongs_to :user
+  has_many :comments, dependent: :destroy
 
     # adds the ability to attach an image to a newly created couplet
   validates :image, presence: true
