@@ -1,38 +1,64 @@
-<h1> Couplets for friends! </h1>
+<h1 class="text-center">
+    Couplets for friends!
+</h1>
 
 <body>
-  <div>
-    <!-- Shows the couplet -->
     <div>
-    <% @couplets.each do |couplet| %>
-    <div class="time-ago">
-      <%= time_ago_in_words couplet.created_at %>
-    </div>
-    <%= link_to (image_tag couplet.image.url(:medium), class:'img-responsive'), couplet %>
-    "<%= couplet.title%>"<br>
-    <%= couplet.first_line%><br>
-    <%= couplet.last_line%> <br>
-    By <%= link_to couplet.user.user_name, profile_path(couplet.user.user_name) %>
-    <% if couplet.comments %>
-    <% couplet.comments.each do |comment| %>
-    <div>
-        <div>
-            <%= comment.user.user_name %>
+        <!-- Shows the couplet -->
+        <div class="couplets-wrapper row">
+            <% @couplets.each do |couplet| %>
+            <div class="couplet">
+                <div class="couplet-head">
+                    <div class="time-ago">
+                        Created
+                        <%= time_ago_in_words couplet.created_at %>
+                        ago!
+                    </div>
+                </div>
+                <div class="image center-block">
+                    <%= link_to (image_tag couplet.image.url(:medium), class:'img-responsive'), couplet %>
+                </div>
+
+                <div class="couplet-bottom">
+                    <p class="lines">
+                        "<%= couplet.title%>"<br>
+                        
+                        <%= couplet.first_line%><br>
+                        <%= couplet.last_line%>
+
+                        <div class="user-name">
+                            By
+                            <%= link_to couplet.user.user_name, profile_path(couplet.user.user_name) %>
+                        </div>
+                    </p>
+
+                    <% if couplet.comments %>
+                    <% couplet.comments.each do |comment| %>
+                    <div class="comment">
+                        <div class="user-name">
+                            <%= comment.user.user_name %>
+                        </div>
+                        <div class="comment_substance">
+                            <%= comment.substance %>
+                        </div>
+                        <div>
+                        <% if comment.user == current_user %>
+                        <%= link_to 'Delete Comment', couplet_comment_path(couplet, comment), method: :delete, data: { confirm: "Are you sure?" } %>
+                        <% end %>
+                      </div>
+                    </div>
+                    <% end %>
+
+                    <div class="comment-form col-sm-11">
+                        <%= form_for [couplet, couplet.comments.new] do |f| %>
+                        <%= f.text_field :substance, placeholder: 'Add a comment...' %>
+                        <% end %>
+
+                    </div>
+                    <% end %>
+                </div>
+            </div>
+            <%end%>
         </div>
-        <div >
-            <%= comment.substance %>
-        </div>
-        <% if comment.user == current_user %>
-        <%= link_to 'Delete Comment', couplet_comment_path(couplet, comment), method: :delete, data: { confirm: "Are you sure?" } %>
-        <% end %>
     </div>
-    <% end %>
-    <% end %>
-    <div >
-        <%= form_for [couplet, couplet.comments.new] do |f| %>
-        <%= f.text_field :substance, placeholder: 'Add a comment...' %>
-        <% end %>
-    <% end %>
-  </div>
-</div>
 </body>

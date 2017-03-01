@@ -1,57 +1,71 @@
 <body>
-  <div class="time-ago">
-    Couplet created <%= time_ago_in_words @couplet.created_at %> ago!
-  </div>
-    <div>
-        <div class="image center-block">
-            <%= image_tag @couplet.image.url(:medium) %>
-        </div>
-        <p class="title">
-            <%= @couplet.title %>
-        </p>
-        <div class="name">
-            By <%= link_to @couplet.user.user_name, profile_path(@couplet.user.user_name) %>
-        </div>
-        <p class="couplet">
-            <%= @couplet.first_line %><br>
 
-            <%= @couplet.last_line %>
-        </p>
-        <% if @couplet.comments %>
-        <% @couplet.comments.each do |comment| %>
-        <div>
+    <div class="couplets-wrapper row">
+
+        <div class="couplet">
+            <div class="couplet-head">
+                <div class="time-ago">
+                    Couplet created
+                    <%= time_ago_in_words @couplet.created_at %>
+                    ago!
+                </div>
+            </div>
             <div>
-                <%= comment.user.user_name %>
-            </div>
-            <div >
-                <%= comment.substance %>
-            </div>
-            <% if comment.user == current_user %>
-            <%= link_to 'Delete Comment', couplet_comment_path(@couplet, comment), method: :delete, data: { confirm: "Are you sure?" } %>
-            <% end %>
-        </div>
-        <% end %>
-        <% end %>
-        <div >
-            <%= form_for [@couplet, @couplet.comments.new] do |f| %>
-            <%= f.text_field :substance, placeholder: 'Add a comment...' %>
-            <% end %>
+                <div class="image center-block">
+                    <%= image_tag @couplet.image.url(:medium) %>
+                </div>
+                <div class="couplet-bottom">
+                    <p class="lines">
+                        "<%= @couplet.title%>"<br>
+                        
+                        <%= @couplet.first_line%><br>
+                        <%= @couplet.last_line%>
 
-        </div>
+                        <div class="user-name">
+                            By
+                            <%= link_to @couplet.user.user_name, profile_path(@couplet.user.user_name) %>
+                        </div>
+                    </p>
 
-        <div class="text-center">
+                    <% if @couplet.comments %>
+                    <% @couplet.comments.each do |comment| %>
+                    <div class="comment">
+                        <div class="user-name">
+                            <%= comment.user.user_name %>
+                        </div>
+                        <div class="comment_substance">
+                            <%= comment.substance %>
+                        </div>
+                        <div>
+                        <% if comment.user == current_user %>
+                        <%= link_to 'Delete Comment', couplet_comment_path(@couplet, comment), method: :delete, data: { confirm: "Are you sure?" } %>
+                        <% end %>
+                      </div>
+                    </div>
+                    <% end %>
+                    <% end %>
+                    <div class="comment-form">
+                        <%= form_for [@couplet, @couplet.comments.new] do |f| %>
+                        <%= f.text_field :substance, placeholder: 'Add a comment...' %>
+                        <% end %>
 
-            <% if @couplet.user.id == current_user.id %>
-            <div class="text-center edit-links">
-                <%= link_to "Edit Couplet", edit_couplet_path(@couplet) %>
-                <br>
-                <%= link_to "Back to Couplet feed", couplets_path %>
+                    </div>
+                </div>
+                <div class="text-center">
+
+                    <% if @couplet.user.id == current_user.id %>
+                    <div class="text-center edit-links">
+                        <%= link_to "Edit Couplet", edit_couplet_path(@couplet) %>
+                        <br>
+                        <%= link_to "Back to Couplet feed", couplets_path %>
+                    </div>
+                <% else %>
+                    <div class="text-center edit-links">
+                        <%= link_to "Back to Couplet feed", couplets_path %>
+                    </div>
+                    <% end %>
+                </div>
+
             </div>
-        <% else %>
-            <div class="text-center edit-links">
-                <%= link_to "Back to Couplet feed", couplets_path %>
-            </div>
-            <% end %>
-
         </div>
     </body>

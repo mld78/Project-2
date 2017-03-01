@@ -13,6 +13,114 @@
 
  */
  @import "bootstrap-sprockets";
- @import "bootswatch/superhero/variables";
+ @import "bootswatch/flatly/variables";
   @import "bootstrap";
-  @import "bootswatch/superhero/bootswatch";
+  @import "bootswatch/flatly/bootswatch";
+
+  body {
+
+    font-family: proxima-nova, 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  }
+  p {
+    color: #125688;
+  }
+  .couplets-wrapper {
+    padding-top: 40px;
+    margin: 0 auto;
+    max-width: 642px;
+    width: 100%;
+  }
+
+  .couplet {
+    background-color: #fff;
+    border-color: #edeeee;
+    border-style: solid;
+    border-radius: 3px;
+    border-width: 1px;
+    margin-bottom: 60px;
+    .couplet-head {
+      flex-direction: row;
+     height: 64px;
+     padding-left: 24px;
+     padding-right: 24px;
+     padding-top: 24px;
+     color: #125688;
+     font-size: 15px;
+     line-height: 18px;
+    }
+    .time-ago {
+          color: #A5A7AA;
+          float: right;
+          display: inline;
+        }
+    .image {
+      border-bottom: 1px solid #eeefef;
+      border-top: 1px solid #eeefef;
+    }
+  }
+
+
+.couplet-bottom{
+
+
+  .user-name, .comment_substance {
+    display: inline;
+    }
+
+  .lines {
+    padding: 24px 24px;
+    font-size: 15px;
+    line-height: 18px;
+    color: #125688;
+    text-align: center;
+
+  }
+
+
+  .user-name {
+    font-weight: 500;
+    margin-right: 0.3em;
+    color: #125688;
+    font-size: 15px;
+  }
+
+  margin-bottom: 75px;
+   padding-top: 24px;
+   padding-left: 24px;
+   padding-right: 24px;
+   padding-bottom: 10px;
+   font-size: 15px;
+   line-height: 18px;
+}
+.comment_substance {
+font-size: 15px;
+line-height: 18px;
+border: medium none;
+width: 100%;
+color: #4B4F54;
+}
+
+.comment-form {
+  padding-top: 24px;
+  margin-top: 13px;
+  margin-left: 24px;
+  margin-right: 24px;
+  min-height: 68px;
+  align-items: center;
+  border-top: 1px solid #EEEFEF;
+  flex-direction: row;
+  justify-content: center;
+}
+  .form-wrapper {
+  width: 60%;
+  margin: 20px auto;
+  background-color: #fff;
+  padding: 40px;
+  border: 1px solid #eeefef;
+  border-radius: 3px;
+}
+
+.edit-links {
+  margin-top: 20px;
+  margin-bottom: 40px;
+}

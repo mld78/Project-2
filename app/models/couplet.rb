@@ -7,7 +7,7 @@ class Couplet < ApplicationRecord
     # adds the ability to attach an image to a newly created couplet
 
   has_attached_file :image,
-                    styles: { medium: "500x500#", thumb: "100x100#" },
+                    styles: { medium: "640x" },
                     storage: :s3,
                     url: ":s3_domain_url",
                     path: "/:class/:attachment/:id_partition/:style/:filename",

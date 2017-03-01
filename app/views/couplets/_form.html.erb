@@ -1,7 +1,19 @@
-<%= simple_form_for @couplet do |f| %>
+<div class="form-wrapper">
+<%= simple_form_for @couplet, html: { class: 'form-horizontal', multipart: true } do |f| %>
+  <div class="form-group">
   <%= f.input :image %>
+</div>
+  <div class="form-group text-center">
   <%= f.input :title %>
-  <%= f.input :first_line %>
-  <%= f.input :last_line %>
+</div>
+  <div class="form-group text-center">
+  <%= f.input :first_line, as: :text %>
+</div>
+  <div class="form-group text-center">
+  <%= f.input :last_line, as: :text %>
+</div>
+  <div class="form-group text-center">
   <%= f.button :submit %>
+</div>
 <% end %>
+</div>
