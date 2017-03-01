@@ -4,7 +4,7 @@ before_action :set_couplet, only: [:show, :edit, :update, :destroy]
 before_action :owned_couplet, only: [:edit, :update, :destroy]
 
   def index
-    @couplets = Couplet.all
+    @couplets = Couplet.all.order(created_at: :desc)
   end
 
   def show

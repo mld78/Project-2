@@ -66,7 +66,10 @@
   .user-name, .comment_substance {
     display: inline;
     }
-
+    .title{
+      font-size: 20px;
+      text-align: center;
+    }
   .lines {
     padding: 24px 24px;
     font-size: 15px;
@@ -120,7 +123,36 @@ color: #4B4F54;
   border-radius: 3px;
 }
 
+
 .edit-links {
   margin-top: 20px;
   margin-bottom: 40px;
+}
+.profile-header {
+  padding: 20px 0;
+}
+
+.profile-image {
+  margin: 20px auto;
+  height: 152px;
+  width: 152px;
+}
+
+.user-name{
+  display: inline;
+}
+
+.profile-user-name {
+  display: inline;
+}
+
+
+.profile-bio {
+  margin-top: 20px;
+}
+
+.edit-button {
+  border-color: #818488;
+  color: #818488;
+  margin-left: 20px;
 }

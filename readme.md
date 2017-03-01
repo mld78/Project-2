@@ -1,4 +1,4 @@
-# Couplets with Strangers
+# Couplets for Friends
 
 Start your own couplet or finish one that someone has started! The trick is that the person finishing it only knows the last word of the first sentence to know what they should try and rhyme with.  
 

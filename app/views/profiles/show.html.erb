@@ -1,25 +1,82 @@
-<h1>Profiles#show</h1>
-<p>Find me in app/views/profiles/show.html.erb</p>
+<div class="couplets-wrapper">
+  <div class="row profile-header">
+    <div class="col-md-6">
+      <div class="img-circle">
+        <%= image_tag @user.prof.url(:medium) %>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="user-name">
+        <h3 class="profile-user-name">
+          <%= @user.user_name %>
+        </h3>
+        <span>
+          <% if @user == current_user %>
+            <%= link_to 'Edit Profile', edit_profile_path(@user.user_name),class: 'btn edit-button' %>
 
-<% if @user == current_user %>
-  <%= link_to 'Edit Profile', edit_profile_path(@user.user_name) %>
-<% end %>
+            <% end %>
+        </span>
+      </div>
+      <p class="profile-bio">
+        <%= @user.bio %>
+      </p>
+      <div class="user-statistics">
+        <p>
+          <%= pluralize @user.couplets.count, 'couplet' %>
+        </p>
+      </div>
+    </div>
+  </div>
 
-<div class="image center-block">
-    <%= image_tag @user.prof.url(:medium) %>
+
+  <% @couplets.each do |couplet| %>
+  <div class="couplet">
+      <div class="couplet-head">
+          <div class="time-ago">
+              Created
+              <%= time_ago_in_words couplet.created_at %>
+              ago!
+          </div>
+      </div>
+      <div class="image center-block">
+          <%= link_to (image_tag couplet.image.url(:medium), class:'img-responsive'), couplet %>
+      </div>
+
+      <div class="couplet-bottom">
+          <p class="lines">
+              "<%= couplet.title%>"<br>
+
+              <%= couplet.first_line%><br>
+              <%= couplet.last_line%>
+
+              <div class="user-name">
+                  By
+                  <%= link_to couplet.user.user_name, profile_path(couplet.user.user_name) %>
+              </div>
+          </p>
+
+          <% if couplet.comments %>
+          <% couplet.comments.each do |comment| %>
+          <div class="comment">
+              <div class="user-name">
+                  <%= comment.user.user_name %>
+              </div>
+              <div class="comment_substance">
+                  <%= comment.substance %>
+              </div>
+              <div>
+              <% if comment.user == current_user %>
+              <%= link_to 'Delete Comment', couplet_comment_path(couplet, comment), method: :delete, data: { confirm: "Are you sure?" } %>
+              <% end %>
+            </div>
+          </div>
+          <% end %>
+
+
+          <% end %>
+      </div>
+  </div>
+  <%end%>
 </div>
-<p class="bio">
-    <%= @user.bio %>
-</p>
-
-
-<% @couplets.each do |couplet| %>
-<div class="time-ago">
-  <%= time_ago_in_words couplet.created_at %>
 </div>
-<%= link_to (image_tag couplet.image.url(:medium), class:'img-responsive'), couplet %>
-"<%= couplet.title%>"<br>
-<%= couplet.first_line%><br>
-<%= couplet.last_line%> <br>
-By <%= couplet.user.user_name%>
-<% end %>
+</body>

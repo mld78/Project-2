@@ -22,7 +22,7 @@
                 <div class="couplet-bottom">
                     <p class="lines">
                         "<%= couplet.title%>"<br>
-                        
+
                         <%= couplet.first_line%><br>
                         <%= couplet.last_line%>
 
@@ -52,6 +52,7 @@
                     <div class="comment-form col-sm-11">
                         <%= form_for [couplet, couplet.comments.new] do |f| %>
                         <%= f.text_field :substance, placeholder: 'Add a comment...' %>
+                        <%= f.submit "Submit comment" %>
                         <% end %>
 
                     </div>

@@ -3,7 +3,7 @@ class ProfilesController < ApplicationController
    before_action :authenticate_user!
   def show
     @user = User.find_by(user_name: params[:user_name])
-    @couplets = User.find_by(user_name: params[:user_name]).couplets
+    @couplets = User.find_by(user_name: params[:user_name]).couplets.order(created_at: :DESC)
   end
 
   def edit
