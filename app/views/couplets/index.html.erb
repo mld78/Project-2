@@ -5,12 +5,14 @@
     <!-- Shows the couplet -->
     <div>
     <% @couplets.each do |couplet| %>
-
+    <div class="time-ago">
+      <%= time_ago_in_words couplet.created_at %>
+    </div>
     <%= link_to (image_tag couplet.image.url(:medium), class:'img-responsive'), couplet %>
-    <%= couplet.title%>
-    <%= couplet.first_line%>
+    "<%= couplet.title%>"<br>
+    <%= couplet.first_line%><br>
     <%= couplet.last_line%> <br>
-    by <%= couplet.user.user_name %>
+    By <%= couplet.user.user_name %>
     <% if couplet.comments %>
     <% couplet.comments.each do |comment| %>
     <div>

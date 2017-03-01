@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
+
+
   devise_for :users, :controllers => { registrations: 'registrations' }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
 
   root 'couplets#index'
+
+
 
 # routes for basic CRUD of a couplet:
   get '/couplets' => 'couplets#index'
@@ -13,6 +17,7 @@ Rails.application.routes.draw do
   get '/couplets/:id' => 'couplets#show', as: :couplet
   patch '/couplets/:id' => 'couplets#update'
   delete '/couplets/:id' => 'couplets#destroy'
+
 
   resources :couplets do
     resources :comments

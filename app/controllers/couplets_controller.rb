@@ -65,7 +65,7 @@ end
 
   def owned_couplet
     unless current_user == @couplet.user
-      
+
       redirect_to root_path
     end
   end
