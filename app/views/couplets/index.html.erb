@@ -1,4 +1,4 @@
-<h1> Couplets With Strangers </h1>
+<h1> Couplets for friends! </h1>
 
 <body>
   <div>
@@ -12,7 +12,7 @@
     "<%= couplet.title%>"<br>
     <%= couplet.first_line%><br>
     <%= couplet.last_line%> <br>
-    By <%= couplet.user.user_name %>
+    By <%= link_to couplet.user.user_name, profile_path(couplet.user.user_name) %>
     <% if couplet.comments %>
     <% couplet.comments.each do |comment| %>
     <div>

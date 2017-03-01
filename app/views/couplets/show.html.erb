@@ -10,7 +10,7 @@
             <%= @couplet.title %>
         </p>
         <div class="name">
-            By <%= @couplet.user.user_name %>
+            By <%= link_to @couplet.user.user_name, profile_path(@couplet.user.user_name) %>
         </div>
         <p class="couplet">
             <%= @couplet.first_line %><br>
