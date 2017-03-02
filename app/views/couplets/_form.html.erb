@@ -4,13 +4,13 @@
   <%= f.input :image %>
 </div>
   <div class="form-group text-center">
-  <%= f.input :title %>
+  <%= f.input :title, input_html: {class:"form-control"} %>
 </div>
   <div class="form-group text-center">
-  <%= f.input :first_line, as: :text %>
+  <%= f.input :first_line, as: :text, input_html: {class:"form-control"} %>
 </div>
   <div class="form-group text-center">
-  <%= f.input :last_line, as: :text %>
+  <%= f.input :last_line, as: :text, input_html: {class:"form-control"} %>
 </div>
   <div class="form-group text-center">
   <%= f.button :submit %>
