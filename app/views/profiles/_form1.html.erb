@@ -1,11 +1,12 @@
-<%= form_for @user, url: {action: "update"}, html: { multipart: true } do |f| %>
+<%= form_for @user, url: {action: "update"}, html: {class: 'form-horizontal', multipart: true } do |f| %>
 
-<div class="field">
+<div class='form-wrapper'>
+<div class="field form-group">
     <%= f.label :prof, "Profile Picture" %><br>
     <%= f.file_field :prof %><br>
     <!-- add a text field for name -->
   </div>
-  <div class="field">
+  <div class="field form-group">
     <%= f.label :bio %><br>
     <%= f.text_area :bio, :placeholder => 'You need to add a bio!' %><br>
   </div>
@@ -14,3 +15,4 @@
   </div>
 
   <%end%>
+</div>
