@@ -45,7 +45,7 @@
                             <%= comment.substance %>
                         </div>
                         <div>
-                        <% if comment.user == current_user %>
+                        <% if comment.user == current_user || current_user.admin? %>
                         <%= link_to 'Delete Comment', couplet_comment_path(couplet, comment), method: :delete, data: { confirm: "Are you sure?" } %>
                         <% end %>
                       </div>
