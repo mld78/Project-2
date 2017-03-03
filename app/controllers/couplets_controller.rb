@@ -1,7 +1,7 @@
 class CoupletsController < ApplicationController
 before_action :authenticate_user!
 before_action :set_couplet, only: [:show, :edit, :update, :destroy]
-before_action :owned_couplet, only: [:edit, :update, :destroy]
+
 
   def index
     @couplets = Couplet.all.order(created_at: :desc)
@@ -63,10 +63,5 @@ end
     params.require(:couplet).permit(:image, :title, :first_line, :last_line)
   end
 
-  def owned_couplet
-    unless current_user == @couplet.user
-
-      redirect_to root_path
-    end
-  end
+  
 end
